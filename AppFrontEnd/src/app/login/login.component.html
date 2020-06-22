@@ -1,0 +1,14 @@
+<form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input #emailinput type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <br>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input #passwordinput type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit"
+        (click)="onSubmitLoginForm(emailinput.value,passwordinput.value)">Sign in</button>
+
+</form>
+<p class="text-center"><a routerLink="/createuser">Create Account!</a></p>

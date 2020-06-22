@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="col-6 float-left">
+        <h3 class="alert alert-success">Products Form</h3>
+        <form #saveForm="ngForm" (ngSubmit)="createnewproduct(saveForm)">
+            <div class="form-group ">
+                <label>Product Name</label>
+                <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="_productsService.selectedProduct._id"
+                    class="form-control">
+                <input type=" text" name="pro_name" #name="ngModel"
+                    [(ngModel)]="_productsService.selectedProduct.pro_name" class="form-control">
+                <label>Product Type</label>
+                <select name="pro_type" #name="ngModel" [(ngModel)]="_productsService.selectedProduct.pro_type"
+                    class="form-control">
+                    <option selected>Choose Product Type</option>
+                    <option *ngFor=" let ty of pro_types">{{ty}}</option>
+                </select>
+                <label>Unit Price</label>
+                <input name="unitprice" #name="ngModel" [(ngModel)]="_productsService.selectedProduct.unitprice"
+                    type="number" class="form-control">
+                <br />
+                <input type="submit" name="submit" value="Save Product" class="btn btn-success">
+
+            </div>
+        </form>
+
+    </div>
+    <div class="col-6 float-right">
+        <h2 class="alert alert-success">Products List</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Type</th>
+                        <th>Unit Price</th>
+                        <th>Stock</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let prlist of product_list">
+                        <td>{{prlist.pro_name}}</td>
+                        <td>{{prlist.pro_type}}</td>
+                        <td>{{prlist.unitprice}}</td>
+
+
+                        <td><button class="btn btn-info" (click)="onEdit(prlist)">Edit</button>
+
+                        <td><button class="btn btn-danger"
+                                (click)="Deleteproductsfromdb(prlist._id,saveForm)">Delete</button>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
